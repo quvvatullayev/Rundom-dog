@@ -3,13 +3,13 @@ import requests, json
 TOKIN = '5567524975:AAHH4ioN3ZGUXbzPPPrXNk2tdWJU3O_fFyk' #user TOKIN
 
 def teligramButton(id:int):
-
     """teligram uchun tasodifiy it suratini tanlash tugmasi uchun funksiya"""
 
     buttonText1 = {'text':'start rundom 🐶'}
     buttonText2 = {'text':'start rundom 😺'}
-    keyboard = {
-        'KeyboardButton':[
+    ReplyKeyboardMarkup = {
+        'resize_keyboard':True,
+        'keyboard':[
             [buttonText1, buttonText2]
         ]
     }
@@ -17,11 +17,11 @@ def teligramButton(id:int):
     data = {
         'chat_id':id,
         'text':'Click to see a random dog and cit picture',
-        'reply_markup':keyboard
+        'reply_markup':ReplyKeyboardMarkup
     }
 
     url = f'https://api.telegram.org/bot{TOKIN}/sendMessage'
-    r = requests.post(url, json=data)
+    r = requests.get(url, json=data)
 
 def getUpdates():
     """a function that retrieves information about users"""
@@ -58,10 +58,10 @@ def rundomDogPhoto(id:int,text:str):
 
     if text == 'start rundom 😺':
         url = "https://aws.random.cat/meow"
-        dog = requests.get(url)
-        dogJson = dog.json()
-        dog = dogJson['file']
-        sendPhoto(id, dog)
+        cit = requests.get(url)
+        dogJson = cit.json()
+        cit = dogJson['file']
+        sendPhoto(id, cit)
 
 x = ''
 while True:
