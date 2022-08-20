@@ -1,6 +1,6 @@
 import requests, json
 
-TOKIN = '5567524975:AAHH4ioN3ZGUXbzPPPrXNk2tdWJU3O_fFyk' #user TOKIN
+TOKIN = '5505244566:AAFRwoxaYH-ahK27OKN0_6MPKStev9LJ1R4' #user TOKIN
 
 def teligramButton(id:int):
 
@@ -60,7 +60,6 @@ while True:
     """cycle using bot"""
     data = getData(getUpdates())
     update_id, id, text = data
-    print(text)
     if x != update_id:
         rundomDogPhoto(id,text)
         teligramButton(id)
