@@ -1,21 +1,22 @@
 import requests, json
 
-TOKIN = '5505244566:AAFRwoxaYH-ahK27OKN0_6MPKStev9LJ1R4' #user TOKIN
+TOKIN = '5567524975:AAHH4ioN3ZGUXbzPPPrXNk2tdWJU3O_fFyk' #user TOKIN
 
 def teligramButton(id:int):
 
     """teligram uchun tasodifiy it suratini tanlash tugmasi uchun funksiya"""
 
     buttonText1 = {'text':'start rundom 🐶'}
+    buttonText2 = {'text':'start rundom 😺'}
     keyboard = {
         'KeyboardButton':[
-            [buttonText1]
+            [buttonText1, buttonText2]
         ]
     }
 
     data = {
         'chat_id':id,
-        'text':'Click to see a random dog picture',
+        'text':'Click to see a random dog and cit picture',
         'reply_markup':keyboard
     }
 
@@ -53,6 +54,13 @@ def rundomDogPhoto(id:int,text:str):
         dog = requests.get(url)
         dogJson = dog.json()
         dog = dogJson['url']
+        sendPhoto(id, dog)
+
+    if text == 'start rundom 😺':
+        url = "https://aws.random.cat/meow"
+        dog = requests.get(url)
+        dogJson = dog.json()
+        dog = dogJson['file']
         sendPhoto(id, dog)
 
 x = ''
